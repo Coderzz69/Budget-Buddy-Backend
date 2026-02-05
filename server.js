@@ -385,6 +385,17 @@ app.put("/user/profile", ClerkExpressRequireAuth(), async (req, res) => {
     }
 });
 
+// Get all users
+app.get("/users", ClerkExpressRequireAuth(), async (req, res) => {
+    try {
+        const users = await prisma.user.findMany();
+        res.json(users);
+    } catch (error) {
+        console.error("Get all users error:", error);
+        res.status(500).json({ error: "Failed to fetch users" });
+    }
+});
+
 // ---------- Server Start ----------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
