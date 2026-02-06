@@ -1,0 +1,37 @@
+{
+  "family": "default-backend-9dc1",
+  "executionRoleArn": "arn:aws:iam::703671893708:role/service-role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "703671893708.dkr.ecr.ap-south-1.amazonaws.com/budget-buddy/backend",
+      "cpu": 1024,
+      "memory": 2048,
+      "memoryReservation": 2048,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/aws/ecs/default/backend-9dc1-4674",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
