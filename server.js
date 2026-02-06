@@ -400,6 +400,16 @@ app.get("/users", ClerkExpressRequireAuth(), async (req, res) => {
     }
 });
 
+// ---------- Error Handling ----------
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    if (err.message === 'Unauthenticated') {
+        res.status(401).json({ error: 'Unauthenticated' });
+    } else {
+        res.status(500).json({ error: 'Something went wrong!' });
+    }
+});
+
 // ---------- Server Start ----------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
