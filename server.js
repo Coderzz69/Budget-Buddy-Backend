@@ -16,6 +16,10 @@ app.use(cors());
 app.use(express.json());
 
 // ---------- Health Check ----------
+app.get("/", (req, res) => {
+    res.json({ status: "This is Home page. Express JS is working!!" });
+});
+
 app.get("/health", (req, res) => {
     res.json({ status: "ok" });
 });
