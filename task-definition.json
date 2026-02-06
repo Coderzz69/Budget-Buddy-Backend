@@ -11,7 +11,7 @@
   },
   "containerDefinitions": [
     {
-      "name": "backend",
+      "name": "Main",
       "image": "703671893708.dkr.ecr.ap-south-1.amazonaws.com/budget-buddy/backend",
       "cpu": 1024,
       "memory": 2048,
