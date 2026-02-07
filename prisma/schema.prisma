@@ -26,17 +26,15 @@ enum SplitType {
 }
 
 model User {
-  id                   String    @id @default(uuid())
-  email                String    @unique
-  password             String?
-  googleId             String?   @unique
-  name                 String?
-  currency             String    @default("INR")
-  emailVerified        Boolean   @default(false)
-  verificationToken    String?
-  passwordResetToken   String?
-  passwordResetExpires DateTime?
-  createdAt            DateTime  @default(now())
+  id                String   @id @default(uuid())
+  email             String   @unique
+  clerkId           String   @unique
+  googleId          String?  @unique
+  name              String?
+  currency          String   @default("INR")
+  emailVerified     Boolean  @default(false)
+  verificationToken String?
+  createdAt         DateTime @default(now())
 
   accounts     Account[]
   categories   Category[]

@@ -32,10 +32,32 @@ app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
     const { email, firstName, lastName } = req.body;
 
     try {
-        // Check if user exists
+        // Check if user exists by Clerk ID
         let user = await prisma.user.findUnique({
             where: { clerkId: userId },
         });
+
+        // If not found by Clerk ID, check by email (for existing users migration)
+        if (!user) {
+            const userEmail = email || req.auth.sessionClaims?.email;
+            if (userEmail) {
+                user = await prisma.user.findUnique({
+                    where: { email: userEmail },
+                });
+
+                if (user) {
+                    // Update existing user with Clerk ID
+                    user = await prisma.user.update({
+                        where: { email: userEmail },
+                        data: {
+                            clerkId: userId,
+                            name: firstName && lastName ? `${firstName} ${lastName}` : user.name,
+                        },
+                    });
+                    console.log(`Migrated existing user to Clerk: ${user.email}`);
+                }
+            }
+        }
 
         if (!user) {
             // Create user in database
@@ -48,7 +70,8 @@ app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
             });
             console.log(`Created new user in database: ${user.email}`);
         } else {
-            // Update user info if changed
+            // Update user info if changed (and already found/migrated)
+            // We might have just updated them in the migration block, but safe to ensure fields
             user = await prisma.user.update({
                 where: { clerkId: userId },
                 data: {
