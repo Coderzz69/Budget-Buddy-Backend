@@ -29,7 +29,7 @@ app.get("/health", (req, res) => {
 // Sync user to database after Clerk authentication
 app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
     const userId = req.auth.userId;
-    const { email, firstName, lastName } = req.body;
+    const { email, firstName, lastName, currency } = req.body;
 
     try {
         // Check if user exists by Clerk ID
@@ -53,6 +53,9 @@ app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
                         data: {
                             clerkId: userId,
                             name: firstName && lastName ? `${firstName} ${lastName}` : existingUser.name,
+                            emailVerified: true,
+                            // Only set currency if provided and different? Or just keep existing?
+                            // Let's keep existing unless explicitly provided and user is linking
                         },
                     });
                     console.log(`Linked existing user to Clerk ID: ${user.email}`);
@@ -63,28 +66,34 @@ app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
                             clerkId: userId,
                             email: userEmail,
                             name: firstName && lastName ? `${firstName} ${lastName}` : null,
+                            currency: currency || "INR", // Default to INR if not provided
+                            emailVerified: true,
                         },
                     });
                     console.log(`Created new user in database: ${user.email}`);
                 }
             } else {
-                // No email found? This is tricky. Create with empty or null email?
-                // Schema says email is unique string.
-                // We will skip creation if no email to avoid collision/error, or assume it's required.
-                // For now, let's create and hope email is optional in practice or provided.
-                // But wait, schema says String (not String?), so it is required.
-                // If no email, we can't create.
                 console.error("Cannot sync user: No email provided.");
                 return res.status(400).json({ error: "Email is required for sync" });
             }
         } else {
             // User found by Clerk ID - Update info
+            const updateData = {
+                email: email || req.auth.sessionClaims?.email || user.email,
+                name: firstName && lastName ? `${firstName} ${lastName}` : user.name,
+                emailVerified: true,
+            };
+
+            // Optional: Update currency if provided?
+            // If currency is passed, we might want to update it.
+            if (currency) {
+                // @ts-ignore
+                updateData.currency = currency;
+            }
+
             user = await prisma.user.update({
                 where: { clerkId: userId },
-                data: {
-                    email: email || req.auth.sessionClaims?.email || user.email,
-                    name: firstName && lastName ? `${firstName} ${lastName}` : user.name,
-                },
+                data: updateData,
             });
             console.log(`Updated user in database: ${user.email}`);
         }
