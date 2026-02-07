@@ -2,7 +2,9 @@
   "family": "default-backend-9dc1",
   "executionRoleArn": "arn:aws:iam::703671893708:role/service-role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
   "runtimePlatform": {
