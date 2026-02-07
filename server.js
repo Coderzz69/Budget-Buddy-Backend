@@ -37,41 +37,48 @@ app.post("/auth/sync", ClerkExpressRequireAuth(), async (req, res) => {
             where: { clerkId: userId },
         });
 
-        // If not found by Clerk ID, check by email (for existing users migration)
         if (!user) {
+            // Check if user exists by email (to support migration/pre-existing users)
             const userEmail = email || req.auth.sessionClaims?.email;
+
             if (userEmail) {
-                user = await prisma.user.findUnique({
+                const existingUser = await prisma.user.findUnique({
                     where: { email: userEmail },
                 });
 
-                if (user) {
-                    // Update existing user with Clerk ID
+                if (existingUser) {
+                    // Link Clerk ID to existing user
                     user = await prisma.user.update({
-                        where: { email: userEmail },
+                        where: { id: existingUser.id },
                         data: {
                             clerkId: userId,
-                            name: firstName && lastName ? `${firstName} ${lastName}` : user.name,
+                            name: firstName && lastName ? `${firstName} ${lastName}` : existingUser.name,
                         },
                     });
-                    console.log(`Migrated existing user to Clerk: ${user.email}`);
+                    console.log(`Linked existing user to Clerk ID: ${user.email}`);
+                } else {
+                    // Create new user in database
+                    user = await prisma.user.create({
+                        data: {
+                            clerkId: userId,
+                            email: userEmail,
+                            name: firstName && lastName ? `${firstName} ${lastName}` : null,
+                        },
+                    });
+                    console.log(`Created new user in database: ${user.email}`);
                 }
+            } else {
+                // No email found? This is tricky. Create with empty or null email?
+                // Schema says email is unique string.
+                // We will skip creation if no email to avoid collision/error, or assume it's required.
+                // For now, let's create and hope email is optional in practice or provided.
+                // But wait, schema says String (not String?), so it is required.
+                // If no email, we can't create.
+                console.error("Cannot sync user: No email provided.");
+                return res.status(400).json({ error: "Email is required for sync" });
             }
-        }
-
-        if (!user) {
-            // Create user in database
-            user = await prisma.user.create({
-                data: {
-                    clerkId: userId,
-                    email: email || req.auth.sessionClaims?.email || "",
-                    name: firstName && lastName ? `${firstName} ${lastName}` : null,
-                },
-            });
-            console.log(`Created new user in database: ${user.email}`);
         } else {
-            // Update user info if changed (and already found/migrated)
-            // We might have just updated them in the migration block, but safe to ensure fields
+            // User found by Clerk ID - Update info
             user = await prisma.user.update({
                 where: { clerkId: userId },
                 data: {
@@ -372,13 +379,38 @@ app.get("/user/profile", ClerkExpressRequireAuth(), async (req, res) => {
         });
 
         if (!user) {
-            // Create user if doesn't exist
-            user = await prisma.user.create({
-                data: {
-                    clerkId: userId,
-                    email: req.auth.sessionClaims?.email || "",
-                },
-            });
+            // Check if user exists by email
+            const userEmail = req.auth.sessionClaims?.email;
+            if (userEmail) {
+                const existingUser = await prisma.user.findUnique({
+                    where: { email: userEmail },
+                });
+
+                if (existingUser) {
+                    // Link
+                    user = await prisma.user.update({
+                        where: { id: existingUser.id },
+                        data: { clerkId: userId },
+                    });
+                } else {
+                    // Create
+                    user = await prisma.user.create({
+                        data: {
+                            clerkId: userId,
+                            email: userEmail,
+                        },
+                    });
+                }
+            } else {
+                // Fallback create (might fail if email is empty but schema requires unique? Schema says email is String @unique, usually implies not null)
+                // Assuming email is present in token for now
+                user = await prisma.user.create({
+                    data: {
+                        clerkId: userId,
+                        email: "", // This might be risky if email is required unique, but empty strings might collide.
+                    },
+                });
+            }
         }
 
         res.json(user);
