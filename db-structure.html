@@ -9,12 +9,11 @@
       background: #0f172a;
       font-family: Arial, sans-serif;
       color: #e5e7eb;
-      overflow: hidden;
     }
 
     svg {
-      width: 100vw;
-      height: 100vh;
+      width: 1300px;
+      height: 1000px;
     }
 
     .table {
@@ -52,7 +51,7 @@
 </head>
 <body>
 
-<svg>
+<svg viewBox="0 0 1300 1000">
   <!-- Arrow definition -->
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
@@ -61,54 +60,132 @@
   </defs>
 
   <!-- User -->
-  <rect x="50" y="50" width="220" height="150" class="table"/>
+  <rect x="50" y="50" width="220" height="160" class="table"/>
   <text x="60" y="75" class="title">User</text>
   <text x="60" y="95" class="attr pk">id (PK)</text>
   <text x="60" y="110" class="attr">email</text>
-  <text x="60" y="125" class="attr">name</text>
-  <text x="60" y="140" class="attr">currency</text>
+  <text x="60" y="125" class="attr">clerkId</text>
+  <text x="60" y="140" class="attr">name</text>
+  <text x="60" y="155" class="attr">currency</text>
+  <text x="60" y="170" class="attr">emailVerified</text>
+  <text x="60" y="185" class="attr">createdAt</text>
 
   <!-- Account -->
-  <rect x="350" y="50" width="240" height="170" class="table"/>
-  <text x="360" y="75" class="title">Account</text>
-  <text x="360" y="95" class="attr pk">id (PK)</text>
-  <text x="360" y="110" class="attr fk">userId (FK)</text>
-  <text x="360" y="125" class="attr">name</text>
-  <text x="360" y="140" class="attr">type</text>
-  <text x="360" y="155" class="attr">balance</text>
+  <rect x="50" y="300" width="220" height="140" class="table"/>
+  <text x="60" y="325" class="title">Account</text>
+  <text x="60" y="345" class="attr pk">id (PK)</text>
+  <text x="60" y="360" class="attr fk">userId (FK)</text>
+  <text x="60" y="375" class="attr">name</text>
+  <text x="60" y="390" class="attr">type</text>
+  <text x="60" y="405" class="attr">balance</text>
+  <text x="60" y="420" class="attr">createdAt</text>
 
-  <!-- Transaction -->
-  <rect x="350" y="270" width="260" height="200" class="table"/>
-  <text x="360" y="295" class="title">Transaction</text>
-  <text x="360" y="315" class="attr pk">id (PK)</text>
-  <text x="360" y="330" class="attr fk">userId (FK)</text>
-  <text x="360" y="345" class="attr fk">accountId (FK)</text>
-  <text x="360" y="360" class="attr">type</text>
-  <text x="360" y="375" class="attr">amount</text>
-  <text x="360" y="390" class="attr">occurredAt</text>
+  <!-- Category -->
+  <rect x="50" y="500" width="220" height="140" class="table"/>
+  <text x="60" y="525" class="title">Category</text>
+  <text x="60" y="545" class="attr pk">id (PK)</text>
+  <text x="60" y="560" class="attr fk">userId (FK)</text>
+  <text x="60" y="575" class="attr">name</text>
+  <text x="60" y="590" class="attr">icon</text>
+  <text x="60" y="605" class="attr">color</text>
+  <text x="60" y="620" class="attr">createdAt</text>
 
   <!-- Group -->
-  <rect x="50" y="280" width="220" height="140" class="table"/>
-  <text x="60" y="305" class="title">Group</text>
-  <text x="60" y="325" class="attr pk">id (PK)</text>
-  <text x="60" y="340" class="attr">name</text>
-  <text x="60" y="355" class="attr fk">ownerId (FK)</text>
+  <rect x="350" y="50" width="220" height="110" class="table"/>
+  <text x="360" y="75" class="title">Group</text>
+  <text x="360" y="95" class="attr pk">id (PK)</text>
+  <text x="360" y="110" class="attr">name</text>
+  <text x="360" y="125" class="attr fk">ownerId (FK)</text>
+  <text x="360" y="140" class="attr">createdAt</text>
+
+  <!-- Transaction -->
+  <rect x="350" y="300" width="220" height="190" class="table"/>
+  <text x="360" y="325" class="title">Transaction</text>
+  <text x="360" y="345" class="attr pk">id (PK)</text>
+  <text x="360" y="360" class="attr fk">userId (FK)</text>
+  <text x="360" y="375" class="attr fk">accountId (FK)</text>
+  <text x="360" y="390" class="attr fk">categoryId (FK)</text>
+  <text x="360" y="405" class="attr">type</text>
+  <text x="360" y="420" class="attr">amount</text>
+  <text x="360" y="435" class="attr">note</text>
+  <text x="360" y="450" class="attr">occurredAt</text>
+  <text x="360" y="465" class="attr">createdAt</text>
+
+  <!-- Budget -->
+  <rect x="350" y="550" width="220" height="140" class="table"/>
+  <text x="360" y="575" class="title">Budget</text>
+  <text x="360" y="595" class="attr pk">id (PK)</text>
+  <text x="360" y="610" class="attr fk">userId (FK)</text>
+  <text x="360" y="625" class="attr fk">categoryId (FK)</text>
+  <text x="360" y="640" class="attr">month</text>
+  <text x="360" y="655" class="attr">limit</text>
+  <text x="360" y="670" class="attr">createdAt</text>
+
+  <!-- GroupMember -->
+  <rect x="650" y="50" width="220" height="100" class="table"/>
+  <text x="660" y="75" class="title">GroupMember</text>
+  <text x="660" y="95" class="attr pk">id (PK)</text>
+  <text x="660" y="110" class="attr fk">groupId (FK)</text>
+  <text x="660" y="125" class="attr fk">userId (FK)</text>
+
+  <!-- Settlement -->
+  <rect x="650" y="250" width="220" height="140" class="table"/>
+  <text x="660" y="275" class="title">Settlement</text>
+  <text x="660" y="295" class="attr pk">id (PK)</text>
+  <text x="660" y="310" class="attr fk">fromUserId (FK)</text>
+  <text x="660" y="325" class="attr fk">toUserId (FK)</text>
+  <text x="660" y="340" class="attr fk">groupId (FK)</text>
+  <text x="660" y="355" class="attr">amount</text>
+  <text x="660" y="370" class="attr">createdAt</text>
 
   <!-- GroupExpense -->
-  <rect x="50" y="480" width="260" height="180" class="table"/>
-  <text x="60" y="505" class="title">GroupExpense</text>
-  <text x="60" y="525" class="attr pk">id (PK)</text>
-  <text x="60" y="540" class="attr fk">groupId (FK)</text>
-  <text x="60" y="555" class="attr fk">paidById (FK)</text>
-  <text x="60" y="570" class="attr">amount</text>
-  <text x="60" y="585" class="attr">splitType</text>
+  <rect x="650" y="500" width="220" height="170" class="table"/>
+  <text x="660" y="525" class="title">GroupExpense</text>
+  <text x="660" y="545" class="attr pk">id (PK)</text>
+  <text x="660" y="560" class="attr fk">groupId (FK)</text>
+  <text x="660" y="575" class="attr fk">paidById (FK)</text>
+  <text x="660" y="590" class="attr">title</text>
+  <text x="660" y="605" class="attr">amount</text>
+  <text x="660" y="620" class="attr">splitType</text>
+  <text x="660" y="635" class="attr">occurredAt</text>
+  <text x="660" y="650" class="attr">createdAt</text>
+
+  <!-- ExpenseSplit -->
+  <rect x="950" y="500" width="220" height="110" class="table"/>
+  <text x="960" y="525" class="title">ExpenseSplit</text>
+  <text x="960" y="545" class="attr pk">id (PK)</text>
+  <text x="960" y="560" class="attr fk">expenseId (FK)</text>
+  <text x="960" y="575" class="attr fk">userId (FK)</text>
+  <text x="960" y="590" class="attr">amount</text>
 
   <!-- Edges -->
-  <line x1="270" y1="100" x2="350" y2="100" class="edge"/> <!-- User -> Account -->
-  <line x1="470" y1="220" x2="470" y2="270" class="edge"/> <!-- Account -> Transaction -->
-  <line x1="160" y1="200" x2="160" y2="280" class="edge"/> <!-- User -> Group -->
-  <line x1="160" y1="420" x2="160" y2="480" class="edge"/> <!-- Group -> GroupExpense -->
-  <line x1="270" y1="140" x2="350" y2="330" class="edge"/> <!-- User -> Transaction -->
+  <!-- User relationships -->
+  <line x1="270" y1="90" x2="350" y2="90" class="edge"/> <!-- User -> Group (owner) -->
+  <line x1="160" y1="210" x2="160" y2="300" class="edge"/> <!-- User -> Account -->
+  <line x1="160" y1="440" x2="160" y2="500" class="edge"/> <!-- User -> Category -->
+
+  <line x1="270" y1="130" x2="350" y2="360" class="edge"/> <!-- User -> Transaction -->
+  <line x1="270" y1="150" x2="350" y2="610" class="edge"/> <!-- User -> Budget -->
+
+  <!-- Complex User relationships (cutting across) -->
+  <line x1="270" y1="70" x2="650" y2="125" class="edge"/> <!-- User -> GroupMember -->
+  <line x1="270" y1="110" x2="650" y2="575" class="edge"/> <!-- User -> GroupExpense (paidBy) -->
+  <line x1="270" y1="100" x2="650" y2="310" class="edge"/> <!-- User -> Settlement (from) -->
+
+  <!-- Account relationships -->
+  <line x1="270" y1="370" x2="350" y2="375" class="edge"/> <!-- Account -> Transaction -->
+
+  <!-- Category relationships -->
+  <line x1="270" y1="560" x2="350" y2="390" class="edge"/> <!-- Category -> Transaction -->
+  <line x1="270" y1="580" x2="350" y2="625" class="edge"/> <!-- Category -> Budget -->
+
+  <!-- Group relationships -->
+  <line x1="570" y1="110" x2="650" y2="110" class="edge"/> <!-- Group -> GroupMember -->
+  <line x1="570" y1="130" x2="650" y2="560" class="edge"/> <!-- Group -> GroupExpense -->
+  <line x1="570" y1="140" x2="650" y2="340" class="edge"/> <!-- Group -> Settlement -->
+
+  <!-- GroupExpense relationships -->
+  <line x1="870" y1="560" x2="950" y2="560" class="edge"/> <!-- GroupExpense -> ExpenseSplit -->
 
 </svg>
 
