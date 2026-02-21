@@ -1,0 +1,10 @@
+Server running on port 3000
+Error: Unauthenticated
+    at file:///home/coderzz69/Desktop/Budget_Buddy_app/bb_backend/node_modules/@clerk/clerk-sdk-node/dist/esm/chunk-AKYUVZYP.mjs:169:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Updated user in database: snathkumarcoonani@gmail.com
+Updated user in database: snathkumarcoonani@gmail.com
+Updated user in database: snathkumarcoonani@gmail.com
+Updated user in database: snathkumarcoonani@gmail.com
+Updated user in database: snathkumarcoonani@gmail.com
+Updated user in database: snathkumarcoonani@gmail.com

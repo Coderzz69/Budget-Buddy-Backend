@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Backend for Budget Buddy",
     "main": "server.js",
+    "type": "module",
     "scripts": {
         "start": "npx prisma migrate deploy && node server.js",
         "dev": "nodemon server.js",
