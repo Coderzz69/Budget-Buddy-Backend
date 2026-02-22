@@ -10,7 +10,7 @@
         "prisma:generate": "prisma generate",
         "prisma:migrate": "prisma migrate dev",
         "postinstall": "prisma generate",
-        "vercel-build": "prisma generate && prisma migrate deploy"
+        "vercel-build": "prisma generate"
     },
     "dependencies": {
         "@clerk/express": "^1.7.68",
