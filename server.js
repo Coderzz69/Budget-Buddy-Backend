@@ -28,7 +28,7 @@ app.get("/health", (req, res) => {
 // ---------- Authentication Routes ----------
 
 // Sync user to database after Clerk authentication
-app.post("/auth/sync", MockAuth(), async (req, res) => {
+app.post("/auth/sync", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
     // const { email, firstName, lastName, currency } = req.body;
     // Mock data for sync
@@ -121,7 +121,7 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
 // All routes below require Clerk authentication
 
 // Create account
-app.post("/accounts", MockAuth(), async (req, res) => {
+app.post("/accounts", SupabaseAuth, async (req, res) => {
     const { name, type } = req.body;
     const userId = req.auth.userId;
 
@@ -160,7 +160,7 @@ app.post("/accounts", MockAuth(), async (req, res) => {
 });
 
 // Read all accounts
-app.get("/accounts", MockAuth(), async (req, res) => {
+app.get("/accounts", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
 
     try {
@@ -181,7 +181,7 @@ app.get("/accounts", MockAuth(), async (req, res) => {
 });
 
 // Update an account
-app.put("/accounts/:id", MockAuth(), async (req, res) => {
+app.put("/accounts/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const { name, type } = req.body;
     const userId = req.auth.userId;
@@ -215,7 +215,7 @@ app.put("/accounts/:id", MockAuth(), async (req, res) => {
 });
 
 // Delete an account
-app.delete("/accounts/:id", MockAuth(), async (req, res) => {
+app.delete("/accounts/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const userId = req.auth.userId;
 
@@ -247,7 +247,7 @@ app.delete("/accounts/:id", MockAuth(), async (req, res) => {
 });
 
 // Create transaction
-app.post("/transactions", MockAuth(), async (req, res) => {
+app.post("/transactions", SupabaseAuth, async (req, res) => {
     const { type, category, amount, description, date, accountId } = req.body;
     const userId = req.auth.userId;
 
@@ -315,7 +315,7 @@ app.post("/transactions", MockAuth(), async (req, res) => {
 });
 
 // Read all transactions
-app.get("/transactions", MockAuth(), async (req, res) => {
+app.get("/transactions", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
 
     try {
@@ -341,7 +341,7 @@ app.get("/transactions", MockAuth(), async (req, res) => {
 });
 
 // Update a transaction
-app.put("/transactions/:id", MockAuth(), async (req, res) => {
+app.put("/transactions/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const { type, category, amount, description, date, accountId } = req.body;
     const userId = req.auth.userId;
@@ -394,7 +394,7 @@ app.put("/transactions/:id", MockAuth(), async (req, res) => {
 });
 
 // Delete a transaction
-app.delete("/transactions/:id", MockAuth(), async (req, res) => {
+app.delete("/transactions/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const userId = req.auth.userId;
 
@@ -521,7 +521,7 @@ app.delete("/categories/:id", SupabaseAuth, async (req, res) => {
 });
 
 // Get current user profile
-app.get("/user/profile", MockAuth(), async (req, res) => {
+app.get("/user/profile", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
 
     try {
@@ -572,7 +572,7 @@ app.get("/user/profile", MockAuth(), async (req, res) => {
 });
 
 // Update user profile
-app.put("/user/profile", MockAuth(), async (req, res) => {
+app.put("/user/profile", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
     const { name, currency } = req.body;
 
