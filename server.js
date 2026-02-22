@@ -1,4 +1,4 @@
-import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import { SupabaseAuth } from "./middleware/supabaseAuth.js";
 import { MockAuth } from "./middleware/mockAuth.js";
 import { PrismaClient } from "@prisma/client";
 import cors from "cors";
@@ -38,14 +38,14 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
     const currency = "USD";
 
     try {
-        // Check if user exists by Clerk ID
+        // Check if user exists by Supabase ID
         let user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
             // Check if user exists by email (to support migration/pre-existing users)
-            const userEmail = email || req.auth.sessionClaims?.email;
+            const userEmail = email;
 
             if (userEmail) {
                 const existingUser = await prisma.user.findUnique({
@@ -53,23 +53,21 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
                 });
 
                 if (existingUser) {
-                    // Link Clerk ID to existing user
+                    // Link Supabase ID to existing user
                     user = await prisma.user.update({
                         where: { id: existingUser.id },
                         data: {
-                            clerkId: userId,
+                            supabaseId: userId,
                             name: firstName && lastName ? `${firstName} ${lastName}` : existingUser.name,
                             emailVerified: true,
-                            // Only set currency if provided and different? Or just keep existing?
-                            // Let's keep existing unless explicitly provided and user is linking
                         },
                     });
-                    console.log(`Linked existing user to Clerk ID: ${user.email}`);
+                    console.log(`Linked existing user to Supabase ID: ${user.email}`);
                 } else {
                     // Create new user in database
                     user = await prisma.user.create({
                         data: {
-                            clerkId: userId,
+                            supabaseId: userId,
                             email: userEmail,
                             name: firstName && lastName ? `${firstName} ${lastName}` : null,
                             currency: currency || "INR", // Default to INR if not provided
@@ -83,9 +81,9 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
                 return res.status(400).json({ error: "Email is required for sync" });
             }
         } else {
-            // User found by Clerk ID - Update info
+            // User found by Supabase ID - Update info
             const updateData = {
-                email: email || req.auth.sessionClaims?.email || user.email,
+                email: email || user.email,
                 name: firstName && lastName ? `${firstName} ${lastName}` : user.name,
                 emailVerified: true,
             };
@@ -98,7 +96,7 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
             }
 
             user = await prisma.user.update({
-                where: { clerkId: userId },
+                where: { supabaseId: userId },
                 data: updateData,
             });
             console.log(`Updated user in database: ${user.email}`);
@@ -108,7 +106,7 @@ app.post("/auth/sync", MockAuth(), async (req, res) => {
             success: true,
             user: {
                 id: user.id,
-                clerkId: user.clerkId,
+                supabaseId: user.supabaseId,
                 email: user.email,
                 name: user.name,
             }
@@ -134,14 +132,14 @@ app.post("/accounts", MockAuth(), async (req, res) => {
     try {
         // Find or create user in database
         let user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
             user = await prisma.user.create({
                 data: {
-                    clerkId: userId,
-                    email: req.auth.sessionClaims?.email || "",
+                    supabaseId: userId,
+                    email: req.auth.claims?.email || "",
                 },
             });
         }
@@ -167,7 +165,7 @@ app.get("/accounts", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
             include: { accounts: true },
         });
 
@@ -190,7 +188,7 @@ app.put("/accounts/:id", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -223,7 +221,7 @@ app.delete("/accounts/:id", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -259,7 +257,7 @@ app.post("/transactions", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -322,7 +320,7 @@ app.get("/transactions", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
             include: {
                 transactions: {
                     include: { account: true, category: true },
@@ -350,7 +348,7 @@ app.put("/transactions/:id", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -402,7 +400,7 @@ app.delete("/transactions/:id", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -428,12 +426,12 @@ app.delete("/transactions/:id", MockAuth(), async (req, res) => {
 });
 
 // Get user categories
-app.get("/categories", MockAuth(), async (req, res) => {
+app.get("/categories", SupabaseAuth, async (req, res) => {
     const userId = req.auth.userId;
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
             include: { categories: true }, // Ensure Relation exists in schema or just fetch by userId if detached
         });
 
@@ -456,14 +454,14 @@ app.get("/categories", MockAuth(), async (req, res) => {
 });
 
 // Update a custom category
-app.put("/categories/:id", MockAuth(), async (req, res) => {
+app.put("/categories/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const { name, icon, color } = req.body;
     const userId = req.auth.userId;
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -491,13 +489,13 @@ app.put("/categories/:id", MockAuth(), async (req, res) => {
 });
 
 // Delete a custom category
-app.delete("/categories/:id", MockAuth(), async (req, res) => {
+app.delete("/categories/:id", SupabaseAuth, async (req, res) => {
     const { id } = req.params;
     const userId = req.auth.userId;
 
     try {
         const user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
@@ -528,12 +526,12 @@ app.get("/user/profile", MockAuth(), async (req, res) => {
 
     try {
         let user = await prisma.user.findUnique({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
         });
 
         if (!user) {
             // Check if user exists by email
-            const userEmail = req.auth.sessionClaims?.email;
+            const userEmail = req.auth.claims?.email;
             if (userEmail) {
                 const existingUser = await prisma.user.findUnique({
                     where: { email: userEmail },
@@ -543,13 +541,13 @@ app.get("/user/profile", MockAuth(), async (req, res) => {
                     // Link
                     user = await prisma.user.update({
                         where: { id: existingUser.id },
-                        data: { clerkId: userId },
+                        data: { supabaseId: userId },
                     });
                 } else {
                     // Create
                     user = await prisma.user.create({
                         data: {
-                            clerkId: userId,
+                            supabaseId: userId,
                             email: userEmail,
                         },
                     });
@@ -559,7 +557,7 @@ app.get("/user/profile", MockAuth(), async (req, res) => {
                 // Assuming email is present in token for now
                 user = await prisma.user.create({
                     data: {
-                        clerkId: userId,
+                        supabaseId: userId,
                         email: "", // This might be risky if email is required unique, but empty strings might collide.
                     },
                 });
@@ -580,11 +578,11 @@ app.put("/user/profile", MockAuth(), async (req, res) => {
 
     try {
         const user = await prisma.user.upsert({
-            where: { clerkId: userId },
+            where: { supabaseId: userId },
             update: { name, currency },
             create: {
-                clerkId: userId,
-                email: req.auth.sessionClaims?.email || "",
+                supabaseId: userId,
+                email: req.auth.claims?.email || "",
                 name,
                 currency,
             },
@@ -623,3 +621,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
