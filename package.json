@@ -9,7 +9,7 @@
         "dev": "nodemon server.js",
         "prisma:generate": "prisma generate",
         "prisma:migrate": "prisma migrate dev",
-        "vercel-build": "prisma generate"
+        "postinstall": "prisma generate"
     },
     "dependencies": {
         "@clerk/express": "^1.7.68",
