@@ -113,7 +113,7 @@ app.post("/auth/sync", SupabaseAuth(), async (req, res) => {
         });
     } catch (error) {
         console.error("User sync error:", error);
-        res.status(500).json({ error: "Failed to sync user" });
+        res.status(500).json({ error: "Failed to sync user: " + error?.message, stack: error?.stack });
     }
 });
 
@@ -336,7 +336,7 @@ app.get("/transactions", SupabaseAuth(), async (req, res) => {
         res.json(user.transactions);
     } catch (error) {
         console.error("Get transactions error:", error);
-        res.status(500).json({ error: "Failed to fetch transactions" });
+        res.status(500).json({ error: "Failed to fetch transactions: " + error?.message, stack: error?.stack });
     }
 });
 
@@ -449,7 +449,7 @@ app.get("/categories", SupabaseAuth(), async (req, res) => {
         res.json(categories);
     } catch (error) {
         console.error("Get categories error:", error);
-        res.status(500).json({ error: "Failed to fetch categories" });
+        res.status(500).json({ error: "Failed to fetch categories: " + error?.message, stack: error?.stack });
     }
 });
 
@@ -567,7 +567,7 @@ app.get("/user/profile", SupabaseAuth(), async (req, res) => {
         res.json(user);
     } catch (error) {
         console.error("Get user profile error:", error);
-        res.status(500).json({ error: "Failed to fetch user profile" });
+        res.status(500).json({ error: "Failed to fetch user profile: " + error?.message, stack: error?.stack });
     }
 });
 
