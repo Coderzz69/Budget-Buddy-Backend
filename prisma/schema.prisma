@@ -28,7 +28,7 @@ enum SplitType {
 model User {
   id            String   @id @default(uuid())
   email         String   @unique
-  clerkId       String   @unique
+  supabaseId    String   @unique
   name          String?
   currency      String   @default("INR")
   emailVerified Boolean  @default(false)
