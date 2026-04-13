@@ -1,0 +1,639 @@
+nohup: ignoring input
+Watching for file changes with StatReloader
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/middleware.py", line 12, in process_request
+    request._messages = default_storage(request)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/__init__.py", line 12, in default_storage
+    return import_string(settings.MESSAGE_STORAGE)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/fallback.py", line 17, in __init__
+    storage_class(*args, **kwargs) for storage_class in self.storage_classes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/cookie.py", line 92, in __init__
+    self.signer = signing.get_cookie_signer(salt=self.key_salt)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/signing.py", line 113, in get_cookie_signer
+    key=_cookie_signer_key(settings.SECRET_KEY),
+                           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/corsheaders/middleware.py", line 53, in __call__
+    result = self.get_response(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/staticfiles/handlers.py", line 80, in __call__
+    return self.application(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+    response = self.get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 141, in get_response
+    response = self._middleware_chain(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+[07/Apr/2026 23:26:41] "GET /api/ HTTP/1.1" 500 59
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 308, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/middleware.py", line 12, in process_request
+    request._messages = default_storage(request)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/__init__.py", line 12, in default_storage
+    return import_string(settings.MESSAGE_STORAGE)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/fallback.py", line 17, in __init__
+    storage_class(*args, **kwargs) for storage_class in self.storage_classes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/messages/storage/cookie.py", line 92, in __init__
+    self.signer = signing.get_cookie_signer(salt=self.key_salt)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/signing.py", line 113, in get_cookie_signer
+    key=_cookie_signer_key(settings.SECRET_KEY),
+                           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/corsheaders/middleware.py", line 53, in __call__
+    result = self.get_response(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 309, in __call__
+    response = response or self.get_response(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/wsgiref/handlers.py", line 137, in run
+    self.result = application(self.environ, self.start_response)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/contrib/staticfiles/handlers.py", line 80, in __call__
+    return self.application(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+    response = self.get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 141, in get_response
+    response = self._middleware_chain(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 57, in inner
+    response = response_for_exception(request, exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+    response = handle_uncaught_exception(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+    return debug.technical_500_response(request, *exc_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/decorators/csp.py", line 21, in _wrapped_sync_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 73, in technical_500_response
+    html = reporter.get_traceback_html()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 435, in get_traceback_html
+    c = Context(self.get_traceback_data(), use_l10n=False)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 402, in get_traceback_data
+    "settings": self.filter.get_safe_settings(),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/views/debug.py", line 160, in get_safe_settings
+    settings_dict[k] = self.cleanse_setting(k, getattr(settings, k))
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/.venv/lib/python3.12/site-packages/django/conf/__init__.py", line 85, in __getattr__
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty.")
+django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty.
+[07/Apr/2026 23:26:49] "GET /api/ HTTP/1.1" 500 59
+/home/sanathcoonani/Desktop/Budget_Buddy_app/bb_backend/backend/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 07, 2026 - 23:26:39
+Django version 6.0.3, using settings 'backend.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+Watching for file changes with StatReloader
+[07/Apr/2026 23:27:20] "GET /api/ HTTP/1.1" 200 207

@@ -1,0 +1,12 @@
+Watching for file changes with StatReloader
+[12/Apr/2026 22:51:30] "GET /api/health/ HTTP/1.1" 200 16
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 12, 2026 - 22:51:23
+Django version 6.0.3, using settings 'backend.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
