@@ -87,14 +87,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# Since we're using Prisma as the primary ORM, we'll keep Django's DB simple or match it if possible.
-# For now, we'll point it to the same Postgres if drivers are installed, but Prisma handles the actual work.
+# Use dedicated SQLite file (dev.db may be locked by Prisma processes)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'budget_buddy.db',
     }
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Password validation
