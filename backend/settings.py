@@ -88,11 +88,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # Use dedicated SQLite file (dev.db may be locked by Prisma processes)
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'budget_buddy.db',
-    }
+    'default': dj_database_url.parse(
+        os.getenv('DATABASE_URL')
+    )
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
