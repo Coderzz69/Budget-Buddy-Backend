@@ -7,6 +7,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.conf import settings
 
 from .models import User
+from .user_sync import sync_user_record
 
 _jwks_cache = None
 _jwks_cache_time = 0
@@ -66,7 +67,18 @@ class ClerkJWTAuthentication(BaseAuthentication):
 
             user = User.objects.filter(clerkId=clerk_id).first()
             if not user:
-                raise AuthenticationFailed('User not found – please call /api/auth/sync-user/ first')
+                email = decoded.get('email') or decoded.get('email_address')
+                if not email:
+                    raise AuthenticationFailed('User not found and token missing email claim')
+
+                user, _ = sync_user_record(
+                    clerk_id=clerk_id,
+                    email=email,
+                    name=decoded.get('name'),
+                    phone_number=decoded.get('phone_number'),
+                    profile_pic=decoded.get('picture'),
+                    currency='INR',
+                )
 
             # Build a lightweight object that DRF expects
             class _AuthUser:

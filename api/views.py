@@ -13,6 +13,7 @@ from .serializers import (
     UserSerializer, AccountSerializer, CategorySerializer,
     TransactionSerializer, BudgetSerializer,
 )
+from .user_sync import sync_user_record
 
 
 # ---------------------------------------------------------------------------
@@ -97,15 +98,13 @@ class SyncUserView(APIView):
             )
 
         try:
-            user, _ = User.objects.update_or_create(
-                clerkId=clerk_id,
-                defaults={
-                    'email': email,
-                    'name': name or decoded.get('name'),
-                    'phoneNumber': payload.get('phoneNumber'),
-                    'profilePic': payload.get('profilePic'),
-                    'currency': payload.get('currency', 'INR'),
-                },
+            user, _ = sync_user_record(
+                clerk_id=clerk_id,
+                email=email,
+                name=name or decoded.get('name'),
+                phone_number=payload.get('phoneNumber'),
+                profile_pic=payload.get('profilePic'),
+                currency=payload.get('currency', 'INR'),
             )
             return Response(UserSerializer(user).data)
         except Exception as e:
