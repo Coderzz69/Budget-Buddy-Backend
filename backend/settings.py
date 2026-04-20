@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from urllib.parse import urlparse, unquote
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'api',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -87,13 +88,32 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-# Use dedicated SQLite file (dev.db may be locked by Prisma processes)
-import dj_database_url
+def build_database_config():
+    database_url = os.getenv('DATABASE_URL', '').strip()
+    if database_url:
+        parsed = urlparse(database_url)
+        if parsed.scheme in ('postgres', 'postgresql'):
+            return {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': unquote(parsed.path.lstrip('/')),
+                'USER': unquote(parsed.username or ''),
+                'PASSWORD': unquote(parsed.password or ''),
+                'HOST': parsed.hostname or '127.0.0.1',
+                'PORT': parsed.port or 5432,
+                'CONN_MAX_AGE': 60,
+            }
+
+    return {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'budget_buddy.db',
+        'OPTIONS': {
+            'timeout': 20,
+        },
+    }
+
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.getenv('DATABASE_URL')
-    )
+    'default': build_database_config(),
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
