@@ -4,9 +4,9 @@ from .models import User, Account, Category, Transaction, Budget
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
-    clerkId = serializers.CharField(source='clerkId', required=True)
-    createdAt = serializers.DateTimeField(source='createdAt', read_only=True)
-    updatedAt = serializers.DateTimeField(source='updatedAt', read_only=True)
+    clerkId = serializers.CharField(required=True)
+    createdAt = serializers.DateTimeField(read_only=True)
+    updatedAt = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = User
@@ -26,7 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
 class AccountSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
     userId = serializers.SerializerMethodField()
-    createdAt = serializers.DateTimeField(source='createdAt', read_only=True)
+    createdAt = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Account
@@ -45,7 +45,7 @@ class AccountSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
     userId = serializers.SerializerMethodField()
-    createdAt = serializers.DateTimeField(source='createdAt', read_only=True)
+    createdAt = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Category
@@ -67,9 +67,9 @@ class TransactionSerializer(serializers.ModelSerializer):
     accountId = serializers.UUIDField(source='account_id', required=True)
     categoryId = serializers.UUIDField(source='category_id', required=False, allow_null=True)
     # Accept camelCase input aliases
-    occurredAt = serializers.DateTimeField(source='occurredAt', required=False)
+    occurredAt = serializers.DateTimeField(required=False)
     note = serializers.CharField(required=False, allow_null=True, allow_blank=True)
-    createdAt = serializers.DateTimeField(source='createdAt', read_only=True)
+    createdAt = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Transaction
@@ -106,7 +106,7 @@ class BudgetSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
     userId = serializers.SerializerMethodField()
     categoryId = serializers.UUIDField(source='category_id')
-    createdAt = serializers.DateTimeField(source='createdAt', read_only=True)
+    createdAt = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Budget
